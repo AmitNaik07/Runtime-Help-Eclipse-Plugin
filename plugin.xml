@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <!-- commands -->
+   <extension point="org.eclipse.ui.commands">
+      <command
+         id="com.sohelper.getanswer"
+         name="Search Stackoverflow">
+      </command>
+   </extension>
+   
+   <!-- menus -->
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+            commandId="com.sohelper.getanswer"
+            label="Search Stackoverflow"
+            style="push">
+         </command>
+      </menuContribution>
+   </extension>
+
+   <!-- handlers -->
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+         class="com.sohelper.handlers.SOHandler"
+         commandId="com.sohelper.getanswer">
+      </handler>
+   </extension>
+<extension
+         point="org.eclipse.ui.bindings">
+   <key
+         commandId="com.sohelper.getanswer"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="ALT+S">
+   </key>
+   </extension>
+</plugin>
