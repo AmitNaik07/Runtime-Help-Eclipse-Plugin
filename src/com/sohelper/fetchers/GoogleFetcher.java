@@ -23,15 +23,8 @@ public class GoogleFetcher {
     private final static String SEARCH_SERVICE = "https://www.google.com/search?as_q=";
     private final static String DOMAIN = ":stackoverflow.com";
 
-    /**
-     * Searches in Google for a query and returns a list containing <code>GoogleResult</code> objects.
-     * 
-     * @param query the query to search.
-     * @param monitor indicates the progress (used for the progress bar).
-     * 
-     * @return A list containing results of type <code>GoogleResult</code>.
-     * @throws IOException If a connection couldn't be established.
-     */
+    // Searches in Google for a query and returns a list containing <code>GoogleResult</code> objects.
+     
     public static List<GoogleResult> getGoogleResults(String query, IProgressMonitor monitor) {
         Elements elements = getElements(query);
         if (elements == null) {
@@ -52,14 +45,8 @@ public class GoogleFetcher {
         return googleResults;
     }
 
-    /**
-     * Returns elements from Google to the given query.
-     * 
-     * @param query The input we want to search for.
-     * 
-     * @return Links for the given query, or <code>null</code> if exception happens.
-     * @throws IOException If couldn't retrieve results.
-     */
+    // Returns elements from Google to the given query.
+  
     private static Elements getElements(String query) {
         String service = SEARCH_SERVICE + query + DOMAIN;
         Document doc;
@@ -72,13 +59,8 @@ public class GoogleFetcher {
         return doc.select("div.g");
     }
 
-    /**
-     * Builds and returns a <code>GoogleResult</code> from a given element.
-     * 
-     * @param element The given element.
-     * 
-     * @return A <code>GoogleResult</code> if could be parsed, <code>null</code> otherwise.
-     */
+    // Builds and returns a <code>GoogleResult</code> from a given element.
+    
     private static GoogleResult getGoogleResult(Element element) {
         GoogleResult googleResult = new GoogleResult();
 
