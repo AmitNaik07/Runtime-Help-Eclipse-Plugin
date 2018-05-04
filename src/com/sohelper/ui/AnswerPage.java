@@ -105,6 +105,7 @@ public class AnswerPage extends WizardPage {
 
     private void setAnswerContent() {
         if (this.answers == null) {
+            browser.setText("No suggestions found.");
             return;
         }
         browser.setText("<html>" + answers.get(answerCount).getBody() + "</html>");        
