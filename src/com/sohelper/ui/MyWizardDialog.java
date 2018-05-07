@@ -93,9 +93,25 @@ public class MyWizardDialog extends WizardDialog {
             ISelection sel;
             sel = ((ISelectionProvider) viewer).getSelection();
             ITextSelection textSel = (ITextSelection) sel;
-            System.out.println("Selected text :  "+textSel.getText());
-            question = textSel.getText();
-            //System.out.println("viewer"+viewer);
+            // System.out.println("Selected text :  "+textSel.getText());
+            String random = textSel.getText();
+            String[] result = random.split(System.lineSeparator());
+            int reslen = result.length;
+            question = result[0];
+            //System.out.println("--length of selected text-- : "+reslen);
+            int i;
+            for(i=reslen-1;i>0;i--)
+            {
+                if(result[i].endsWith("(Unknown Source)"))
+                {
+                    break;
+                }
+            }
+            String temp = result[i];
+            resulti = temp.substring(3, temp.length()-1);
+            question = question + " " + resulti;
+            //resulti = Integer.parseInt(result[i].replaceAll("\\D+",""));
+            //System.out.println("--trying to get line numbers-- "+result[i]);
             
             if (viewer == null || viewer.getDocument() == null)
             return null;
